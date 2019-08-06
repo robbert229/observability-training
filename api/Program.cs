@@ -19,7 +19,6 @@ namespace JohnRowley.Instrumentation
         public static void Main(string[] args)
         {
             CreateWebHostBuilder(args).Build().Run();
-            System.Console.Write("Hello World!");
         }
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
