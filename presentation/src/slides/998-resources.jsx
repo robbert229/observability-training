@@ -17,7 +17,7 @@ export default function() {
         <ListItem>
           <Link
             target="_blank"
-            href="https://github.com/ganderzz/intro-functional-programming"
+            href="https://github.com/robbert229/observability-training"
           >
             Slides & Code Examples
           </Link>
@@ -25,25 +25,25 @@ export default function() {
         <ListItem>
           <Link
             target="_blank"
-            href="https://jsbin.com/femoburako/1/edit?js,console"
+            href="https://blog.twitter.com/engineering/en_us/a/2013/observability-at-twitter.html"
           >
-            JS Bin Example of Map/Filter/Reduce
+            Observability at Twitter (part 1)
           </Link>
         </ListItem>
         <ListItem>
           <Link
             target="_blank"
-            href="https://mostly-adequate.gitbooks.io/mostly-adequate-guide/"
+            href="https://blog.twitter.com/engineering/en_us/a/2016/observability-at-twitter-technical-overview-part-i.html"
           >
-            Professor Frisby's Most Adequate Guide to Functional Programming
+            Observability at Twitter (part 2)
           </Link>
         </ListItem>
         <ListItem>
           <Link
             target="_blank"
-            href="https://github.com/getify/functional-light-js"
+                      href="https://peter.bourgon.org/blog/2017/02/21/metrics-tracing-and-logging.html"
           >
-            Functional Light JavaScript (Book)
+            Metrics, Tracing, and Logging
           </Link>
         </ListItem>
       </List>

@@ -1,4 +1,0 @@
-# Services
-* API
-* Minio
-* 

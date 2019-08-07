@@ -24,7 +24,7 @@ using OpenTracing.Util;
 using Jaeger;
 using Jaeger.Reporters;
 using Jaeger.Samplers;
-
+using Prometheus;
 
 namespace JohnRowley.Instrumentation
 {
