@@ -2,7 +2,7 @@ import React from "react";
 import { Slide, Text, CodePane } from "spectacle";
 
 const notes = `
-
+Briefly go over configuring prometheus on kubernetes.
 `;
 
 const source = `

@@ -2,11 +2,11 @@ import React from "react";
 import { Slide, Text, CodePane } from "spectacle";
 
 const notes = `
-<pre>
-# using Prometheus;
-# app.UseMetricServer();
-# app.UseHttpMetrics();
-</pre>
+We are using docker and docker-compose to provide the environment for todays talk.
+
+using Prometheus;
+app.UseMetricServer();
+app.UseHttpMetrics();
 `;
 
 const source = `
