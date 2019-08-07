@@ -8,6 +8,13 @@
 
   <ItemGroup>
     <PackageReference Include="AWSSDK.S3" Version="3.3.103.4" />
+    <PackageReference Include="Google.Protobuf" Version="3.9.1" />
+    <PackageReference Include="Grpc" Version="1.22.0" />
+    <PackageReference Include="Grpc.Core" Version="1.22.0" />
+    <PackageReference Include="Grpc.Tools" Version="1.22.0">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
     <!-- <PackageReference Include="Google.Protobuf" Version="3.9.0" />
     <PackageReference Include="Grpc.Tools" Version="1.22.0">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
@@ -16,10 +23,11 @@
     <PackageReference Include="Jaeger" Version="0.3.3" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
+    <PackageReference Include="OpenTracing.Contrib.Grpc" Version="0.1.0" />
     <PackageReference Include="OpenTracing.Contrib.NetCore" Version="0.6.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <Protobuf Include="Protos\directory.proto" GrpcServices="Client" />
+    <Protobuf Include="protos\accounts.proto" GrpcServices="Client" />
   </ItemGroup>
 </Project>

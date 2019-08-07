@@ -12,16 +12,27 @@ namespace JohnRowley.Instrumentation.Controllers
     [ApiController]
     public class AvatarsController : ControllerBase
     {
-        private IBlobStore blobStore;
-        public AvatarsController(Services.IBlobStore blobStore) {
-            this.blobStore = blobStore;
+        private IBlobStore _blobStore;
+        private IAccountsService _accountsService;
+
+        public AvatarsController(Services.IBlobStore blobStore, Services.IAccountsService accountsService) {
+            this._blobStore = blobStore;
+            this._accountsService = accountsService;
         }
 
         // GET api/avatars
         [HttpGet("{id}")]
         public async Task<ActionResult> Get(string id)
         {
-            var avatar = await this.blobStore.GetAvatar(id);
+            Microsoft.Extensions.Primitives.StringValues headerValues;
+            if (Request.Headers.TryGetValue("Authorization", out headerValues)) {
+                string token = headerValues.First();
+            }
+
+
+            // var authorized = this._accountsService.Validate()
+
+            var avatar = await this._blobStore.GetAvatar(id);
             return new FileStreamResult(avatar, "image/png");
         }
 
