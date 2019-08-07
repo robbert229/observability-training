@@ -19,17 +19,9 @@ namespace JohnRowley.Instrumentation.Services {
         }
 
         public bool Validate(string token) {
-            Activity activity = new Activity("AccountsGrpcClient.Validate");
-            activity.Start();
-
-            var result = _client.Validate(new ValidateRequest{
+            return _client.Validate(new ValidateRequest{
                 Token = token,
             }).Allowed;
-
-            activity.Stop();
-
-            return result;
-
         }
     }
 }

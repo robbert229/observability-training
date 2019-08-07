@@ -24,13 +24,18 @@ namespace JohnRowley.Instrumentation.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult> Get(string id)
         {
-            Microsoft.Extensions.Primitives.StringValues headerValues;
-            if (Request.Headers.TryGetValue("Authorization", out headerValues)) {
-                string token = headerValues.First();
+            if (!Request.Headers.TryGetValue(
+                "Authorization", 
+                out Microsoft.Extensions.Primitives.StringValues headerValues))
+            {
+                return StatusCode(403, "no auth token given");
             }
 
-
-            // var authorized = this._accountsService.Validate()
+            var token = headerValues.First();
+            var isValid = _accountsService.Validate(token);
+            if (!isValid) {
+                return StatusCode(403, "invalid token given");
+            }
 
             var avatar = await this._blobStore.GetAvatar(id);
             return new FileStreamResult(avatar, "image/png");

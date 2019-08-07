@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
+using System.Reflection;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -14,9 +15,16 @@ using Amazon;
 using Amazon.S3;
 using Grpc;
 using Grpc.Core;
+using Grpc.Core.Interceptors;
 using OpenTracing;
 using OpenTracing.Contrib.NetCore.CoreFx;
+using OpenTracing.Contrib.Grpc.Interceptors;
+using OpenTracing.Contrib.Grpc;
 using OpenTracing.Util;
+using Jaeger;
+using Jaeger.Reporters;
+using Jaeger.Samplers;
+
 
 namespace JohnRowley.Instrumentation
 {
@@ -33,8 +41,8 @@ namespace JohnRowley.Instrumentation
                 .ConfigureServices(services => {
                     services.AddOpenTracing();
                     services.AddJaeger();
-                    services.AddMinioBlob();
-                    services.AddGrpcAccounts();
+                    services.AddBlobService();
+                    services.AddAccountsService();
                 });
     }
 }
@@ -43,7 +51,7 @@ namespace Microsoft.Extensions.DependencyInjection {
     public static class MinioBlobServiceCollectionExtensions {
         
 
-        public static IServiceCollection AddMinioBlob(this IServiceCollection services)
+        public static IServiceCollection AddBlobService(this IServiceCollection services)
         {
             if (services == null)
                 throw new ArgumentNullException(nameof(services));
@@ -64,20 +72,28 @@ namespace Microsoft.Extensions.DependencyInjection {
 
     public static class AccountsGrpcClientServiceCollectionExtensions {
 
-        public static IServiceCollection AddGrpcAccounts(this IServiceCollection services) 
+        public static IServiceCollection AddAccountsService(this IServiceCollection services)
         {
             if (services == null) {
                 throw new ArgumentNullException(nameof(services));
             }
 
-            //var tracer = services.GetService<ITracer>();
-            //var tracingInterceptor = new ClientTracingInterceptor(tracer);
+            services.AddSingleton<IAccountsService>(serviceProvider =>
+            {
+                var tracer = serviceProvider.GetRequiredService<ITracer>();
+                var tracingInterceptor = new ClientTracingInterceptor
+                    .Builder(tracer)
+                    .WithStreaming()
+                    .WithVerbosity()
+                    .Build();
 
-            var channel = new Channel("localhost:4999", ChannelCredentials.Insecure);
-            var client = new Accounts.AccountsClient(channel);
-
-            services.AddSingleton<IAccountsService>(new AccountsGrpcClient(client));
-
+                var channel = new Channel("localhost:4999", ChannelCredentials.Insecure);                
+                var invoker = channel.Intercept(tracingInterceptor);
+                var client = new Accounts.AccountsClient(invoker);
+                
+                return new AccountsGrpcClient(client);
+            });
+            
             return services;
         }
     }
@@ -92,13 +108,11 @@ namespace Microsoft.Extensions.DependencyInjection {
 
             services.AddSingleton<ITracer>(serviceProvider =>
             {
-                string serviceName = Assembly.GetEntryAssembly().GetName().Name;
+                var serviceName = Assembly.GetEntryAssembly().GetName().Name;
+                var loggerFactory = serviceProvider.GetRequiredService<ILoggerFactory>();
+                var sampler = new ConstSampler(sample: true);
 
-                ILoggerFactory loggerFactory = serviceProvider.GetRequiredService<ILoggerFactory>();
-
-                ISampler sampler = new ConstSampler(sample: true);
-
-                ITracer tracer = new Tracer.Builder(serviceName)
+                var tracer = new Tracer.Builder(serviceName)
                     .WithLoggerFactory(loggerFactory)
                     .WithSampler(sampler)
                     .Build();
