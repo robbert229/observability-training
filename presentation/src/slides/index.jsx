@@ -13,7 +13,11 @@ export { default as Nine } from './09-metrics-types';
 
 export { default as Ten } from './10-use';
 export { default as Eleven } from './11-red';
+export { default as Twelve } from './12-code';
 
-export { default as ServiceMonitor } from './997-servicemonitor';
+export { default as Yaml } from './13-prometheus-yaml';
+export { default as ServiceMonitor } from './14-prometheus-servicemonitor';
+export { default as LiveCode2 } from './15-live-code-2';
+
 export { default as resources } from './998-resources';
 export { default as Questions } from './999-questions';

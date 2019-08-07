@@ -2,7 +2,7 @@ import React from "react";
 import { Slide, Text, CodePane } from "spectacle";
 
 const notes = `
-The RED method is used to get general metrics for a given service. Each service can, and should have RED metrics exposed.
+
 `;
 
 const source = `

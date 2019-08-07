@@ -59,9 +59,7 @@ export default function () {
                 Prometheus /metrics
             </Text>
 
-            
-                <CodePane source={source} theme="light" />
-            
+            <CodePane source={source} theme="light" />
         </Slide>
     );
 }

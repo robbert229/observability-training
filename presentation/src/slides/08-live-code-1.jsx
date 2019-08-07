@@ -14,6 +14,7 @@ dotnet add package prometheus-net
 dotnet add package prometheus-net.AspNetCore
 
 # Add the following to Startup.cs -> Configure (line 33/34)
+# using Prometheus;
 # app.UseMetricServer();
 # app.UseHttpMetrics();
 </pre>
