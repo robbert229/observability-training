@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+service Accounts {
+  rpc Validate (ValidateRequest) returns (ValidateResponse) {}
+}
+
+
+message ValidateRequest {
+  string token = 1;
+}
+
+
+message ValidateResponse {
+  bool allowed = 1;
+}
