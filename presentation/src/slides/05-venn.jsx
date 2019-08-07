@@ -3,7 +3,7 @@ import { Appear, Image, Slide, Text, List, ListItem, Quote, BlockQuote, Cite } f
 import Venn from './media/observability.png';
 
 const notes = `
-    We can instrument our codebase by using logging, metrics, and tracing.
+    We can instrument our codebase by using logging, metrics, and tracing. 
     <br />
     <br />
 
