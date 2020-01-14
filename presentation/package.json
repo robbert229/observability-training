@@ -19,7 +19,7 @@
     "extends": "react-app"
   },
   "resolutions": {
-    "terser": "3.16.1"
+    "terser": "4.6.3"
   },
   "browserslist": [
     ">0.2%",
@@ -29,7 +29,7 @@
   ],
   "devDependencies": {
     "spectacle-renderer": "0.0.3",
-    "terser": "3.16.1",
+    "terser": "4.6.3",
     "terser-webpack-plugin": "^1.2.2"
   }
 }
