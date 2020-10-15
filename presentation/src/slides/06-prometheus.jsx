@@ -1,5 +1,5 @@
 import React from "react";
-import { Slide, Text, Image, BlockQuote, Quote, Cite } from "spectacle";
+import { Slide, Text, Image } from "spectacle";
 import Prometheus from './media/prometheus-architecture.png';
 
 const notes = `

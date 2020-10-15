@@ -1,5 +1,5 @@
 import React from "react";
-import { Appear, Image, Slide, Text, List, ListItem, Quote, BlockQuote, Cite } from "spectacle";
+import { Appear, Image, Slide, Text, List, ListItem } from "spectacle";
 import Venn from './media/observability.png';
 
 const notes = `

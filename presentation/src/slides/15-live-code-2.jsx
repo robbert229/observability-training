@@ -1,5 +1,5 @@
 import React from "react";
-import { Slide, Text, Image, BlockQuote, Quote, Cite, CodePane } from "spectacle";
+import { Slide, Text } from "spectacle";
 
 const notes = `
 <h2>Documentation</h2>

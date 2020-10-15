@@ -4,9 +4,9 @@
   "private": true,
   "license": "MIT",
   "dependencies": {
-    "react": "16.13.1",
-    "react-dom": "16.13.1",
-    "spectacle-scripts": "2.4.0"
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0",
+    "spectacle-scripts": "^2.4.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -28,7 +28,7 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "spectacle-renderer": "0.0.3",
+    "spectacle-renderer": "^0.0.3",
     "terser": "4.8.0",
     "terser-webpack-plugin": "^3.0.6"
   }
