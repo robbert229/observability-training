@@ -1,5 +1,5 @@
 import React from "react";
-import { Appear, Image, Slide, Text, List, ListItem, Quote, BlockQuote, Cite } from "spectacle";
+import { Appear, Image, Slide, Text } from "spectacle";
 import InstrumentationImage from './media/steam-turbine.jpg';
 
 const notes = `

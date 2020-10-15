@@ -1,6 +1,5 @@
 import React from "react";
-import { Appear, Image, Slide, Text, List, ListItem, Quote, BlockQuote, Cite } from "spectacle";
-import ObservabilityImage from './media/observability.png';
+import { Appear, Slide, Text, List, ListItem } from "spectacle";
 
 const notes = `
   

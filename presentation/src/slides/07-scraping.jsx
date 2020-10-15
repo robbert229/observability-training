@@ -1,6 +1,5 @@
 import React from "react";
-import { Slide, Text, Image, BlockQuote, Quote, Cite, CodePane } from "spectacle";
-import Prometheus from './media/prometheus-architecture.png';
+import { Slide, Text, CodePane } from "spectacle";
 
 require('prismjs/components/prism-csharp');
 
