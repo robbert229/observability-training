@@ -4,8 +4,8 @@
   "private": true,
   "license": "MIT",
   "dependencies": {
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
     "spectacle-scripts": "^2.4.0"
   },
   "scripts": {
