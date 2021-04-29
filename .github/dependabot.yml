@@ -1,0 +1,17 @@
+version: 2
+updates:
+- package-ecosystem: npm
+  directory: "/presentation"
+  schedule:
+    interval: daily
+    time: "13:00"
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: terser
+    versions:
+    - 5.5.1
+    - 5.6.0
+    - 5.6.1
+  - dependency-name: elliptic
+    versions:
+    - 6.5.3
